@@ -3,6 +3,7 @@ const apiUrl = 'https://api.openweathermap.org/data/2.5/forecast'
 const locationInput = document.getElementById('locationInput');
 const searchButton = document.getElementById('searchButton');
 const locationElement = document.getElementById('location');
+const populationElement = document.getElementById('population');
 const temperatureElement = document.getElementById('temperature');
 const descriptionElement = document.getElementById('description');
 
@@ -25,11 +26,11 @@ function fetchWeather(location) {
 
     fetch(url)
         .then(res => res.json())
-        // .then(res => console.log(res))
         .then(data => {
             console.log(data);
             locationElement.textContent = data.city.name;
-            temperatureElement.textContent = data.list;
+            populationElement.textContent = `${data.city.population} lives`;//till this everything works
+            temperatureElement.textContent = data.list;//this doesn't
             // descriptionElement.textContent = data.weather[0].description;
         })
         .catch(error => {
