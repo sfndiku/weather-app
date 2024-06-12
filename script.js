@@ -16,11 +16,6 @@ searchButton.addEventListener('click', () => {
 });
 
 
-searchButton.addEventListener('click',() => {
-    document.getElementById("h1").innerHTML = "Precise Weather";
-}); //Just to check whether the button work
-
-
 function fetchWeather(location) {
     const url = `${apiUrl}?q=${location}&appid=${apiKey}`;
 
@@ -29,9 +24,8 @@ function fetchWeather(location) {
         .then(data => {
             console.log(data);
             locationElement.textContent = data.city.name;
-            populationElement.textContent = `${data.city.population} lives`;//till this everything works
-            temperatureElement.textContent = data.list;//this doesn't
-            // descriptionElement.textContent = data.weather[0].description;
+            temperatureElement.textContent = `${(data.list[0].main.temp-273).toFixed(2)}°C`;//since it is in kelvin, -273 And toFixed used to round to2 decimals
+            descriptionElement.textContent = data.list[0].weather[0].description;
         })
         .catch(error => {
             console.error('Error fetching weather data:', error);
