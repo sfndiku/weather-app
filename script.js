@@ -26,7 +26,7 @@ function fetchWeather(location) {
     locationElement.textContent = "";//line to clear data
     temperatureElement.textContent = "";//line to clear data
     descriptionElement.textContent = "";//line to clear data
-    temperatureElement.textContent = "Loading...";
+    temperatureElement.textContent = "Loading....";
     fetch(url)
         .then(res => res.json())
         .then(data => {
